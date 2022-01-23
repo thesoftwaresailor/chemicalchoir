@@ -11,7 +11,9 @@ class Resource : MonoBehaviour
     public Renderer renderer;
     public Rigidbody rigidbody;
 
-    public DropPlane dropPlane;
+    public int macro;
+    public int micro;
+    public string name;
 
     public float microTimer;
     public float macroTimer;
@@ -19,16 +21,24 @@ class Resource : MonoBehaviour
     public float macroPhase;
 
     private int layerMask;
+    private int resourceMask;
 
     private void Start()
     {
         layerMask = 1 << LayerMask.NameToLayer("Ignore Raycast");
+        resourceMask = 1 << LayerMask.NameToLayer("Resources");
     }
 
-    private void FlipMaterial()
+    private void FlipMicro()
     {
         renderer.material = isMatA ? matA : matB;
         isMatA = !isMatA;
+        micro = micro == 0 ? 1 : 0;
+    }
+
+    private void FlipMacro()
+    {
+        macro = macro == 0 ? 1 : 0;
     }
 
     public Diocese Diocese {get;set;}
@@ -40,20 +50,40 @@ class Resource : MonoBehaviour
             microPhase -= Time.deltaTime * Diocese.CurrentTimeScale;
             if (microPhase <= 0)
             {
-                FlipMaterial();
+                FlipMicro();
                 microPhase = microTimer;
             }
             macroPhase -= Time.deltaTime * Diocese.CurrentTimeScale;
             if (macroPhase <= 0)
             {
                 macroPhase = macroTimer;
+                FlipMacro();
             }
         }
 
         if (isBeingDragged)
         {
-            RaycastHit result = CastFromScreenAtMouse();
-            transform.position = result.point;
+            RaycastHit result;
+            if(CastFromScreenAtMouse(out result))
+                transform.position = result.point;
+            if (Input.GetMouseButtonUp(0))
+            {
+                Debug.Log("Mouse up");
+                isBeingDragged = false;
+                rigidbody.isKinematic = false;
+                RaycastHit[] resources = CastFromScreenAtMouseForResource();
+                Debug.Log(resources.ToString());
+                Debug.Log(resources[0]);
+                if (resources.Length >= 2)
+                {
+                    Collider two = resources[1].collider;
+                    if(two == this.gameObject)
+                    {
+                        two = resources[0].collider;
+                    }
+                    Crafting.instance.Craft(this, two.gameObject.GetComponent<Resource>());
+                }
+            }
         }
     }
 
@@ -65,21 +95,20 @@ class Resource : MonoBehaviour
         rigidbody.isKinematic = true;
     }
 
-    private void OnMouseUp()
-    {
-        isBeingDragged = false;
-        rigidbody.isKinematic = false;
-    }
-
-    private RaycastHit CastFromScreenAtMouse()
+    private bool CastFromScreenAtMouse(out RaycastHit hit)
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        bool didHit = Physics.Raycast(ray, out RaycastHit hit, 5f, layerMask: layerMask);
-        if (didHit == false)
-        {
-            throw new Exception("Did not hit the drop plane");
-        }
-        return hit;
+        bool didHit = Physics.Raycast(ray, out hit, 5f, layerMask: layerMask);
+        return didHit;
     }
+
+    private RaycastHit[] CastFromScreenAtMouseForResource()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit[] hits = Physics.RaycastAll(ray, 5f, resourceMask);
+        return hits;
+    }
+
 }

@@ -1,12 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Crafting
+class Crafting : MonoBehaviour
 {
-    class Crafting
+
+    public Combinations combinations;
+
+    public static Crafting instance;
+
+    public void Start()
     {
+        instance = this;
+        combinations.FillDictionary();
     }
+
+    public void Craft(Resource resourceOne, Resource resourceTwo)
+    {
+        CombinableResource one;
+        one.micro = resourceOne.micro;
+        one.macro = resourceOne.macro;
+        one.name = resourceOne.name;
+        CombinableResource two;
+        two.micro = resourceTwo.micro;
+        two.macro = resourceTwo.macro;
+        two.name = resourceTwo.name;
+        CombinationPair pair;
+        pair.a = one;
+        pair.b = two;
+        GameObject result = combinations.combineResource(pair);
+        var spawnTransform = resourceOne.gameObject.transform;
+        Destroy(resourceOne.gameObject);
+        Destroy(resourceTwo.gameObject);
+        Instantiate(result, spawnTransform);
+    }
+
 }
