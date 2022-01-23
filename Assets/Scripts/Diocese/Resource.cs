@@ -40,6 +40,8 @@ public class Resource : MonoBehaviour
     private float initialMass;
     private Vector3 targetPoint;
 
+    private bool isBeingDragged;
+
     public float MicroPhase => microPhase;
     public float MacroPhase => macroPhase;
 
@@ -49,6 +51,8 @@ public class Resource : MonoBehaviour
         layerMask = 1 << LayerMask.NameToLayer("Drop");
         resourceMask = 1 << LayerMask.NameToLayer("Resources");
         initialMass = rigidBody.mass;
+        microPhase = microTimer;
+        macroPhase = macroTimer;
     }
 
     private void FlipMicro()
@@ -114,8 +118,6 @@ public class Resource : MonoBehaviour
             }
         }
     }
-
-    private bool isBeingDragged;
 
     private void OnMouseDown()
     {

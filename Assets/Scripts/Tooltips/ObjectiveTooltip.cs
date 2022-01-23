@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-using System;
 
-public class ResourceTooltip : MonoBehaviour
+public class ObjectiveTooltip : MonoBehaviour
 {
 
-    public static ResourceTooltip instance;
+    public static ObjectiveTooltip instance;
 
     public TextMeshProUGUI resourceName;
 
@@ -18,15 +17,15 @@ public class ResourceTooltip : MonoBehaviour
 
     public Camera mainCamera;
 
-    private Resource resource;
+    private ObjectiveCraftings objective;
 
     public Vector3 offset;
 
     public RectTransform parentTransform;
 
-    public void ShowTooltip(Resource resource)
+    public void ShowTooltip(ObjectiveCraftings objective)
     {
-        this.resource = resource;
+        this.objective = objective;
         tooltip.enabled = true;
         resourceName.enabled = true;
         resourceDescription.enabled = true;
@@ -37,9 +36,8 @@ public class ResourceTooltip : MonoBehaviour
         tooltip.enabled = false;
         resourceName.enabled = false;
         resourceDescription.enabled = false;
-        this.resource = null;
+        this.objective = null;
     }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -51,13 +49,11 @@ public class ResourceTooltip : MonoBehaviour
     {
         if (tooltip.enabled)
         {
-            if (resource)
+            if(objective)
             {
-                resourceName.text = resource.resourceName;
-                double micro = Math.Round(resource.MicroPhase, 1);
-                double macro = Math.Round(resource.MacroPhase, 1);
-                resourceDescription.text = "Minor Phase: " + micro + "\nMajor Phase: " + macro;
-                parentTransform.position = resource.gameObject.transform.position + offset;
+                resourceName.text = objective.objectiveName;
+                resourceDescription.text = "Objectives Found: " + ObjectiveCraftings.objectiveRegister.Count;
+                parentTransform.position = objective.gameObject.transform.position + offset;
                 parentTransform.LookAt(transform.position + mainCamera.transform.rotation * Vector3.forward, mainCamera.transform.rotation * Vector3.up);
             }
             else
