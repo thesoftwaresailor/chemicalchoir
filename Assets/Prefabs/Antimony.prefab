@@ -133,6 +133,6 @@ MonoBehaviour:
   micro: 0
   name: Antimony
   microTimer: 3
-  macroTimer: 7
+  macroTimer: 45
   microPhase: 3
-  macroPhase: 7
+  macroPhase: 45

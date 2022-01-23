@@ -133,6 +133,6 @@ MonoBehaviour:
   micro: 0
   name: Luna Alba
   microTimer: 1
-  macroTimer: 4
+  macroTimer: 20
   microPhase: 1
-  macroPhase: 4
+  macroPhase: 20

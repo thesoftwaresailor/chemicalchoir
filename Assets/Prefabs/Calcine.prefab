@@ -133,6 +133,6 @@ MonoBehaviour:
   micro: 0
   name: Calcine
   microTimer: 5
-  macroTimer: 10
+  macroTimer: 60
   microPhase: 5
-  macroPhase: 10
+  macroPhase: 60

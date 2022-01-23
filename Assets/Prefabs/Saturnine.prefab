@@ -133,6 +133,6 @@ MonoBehaviour:
   micro: 0
   name: Saturnine
   microTimer: 2
-  macroTimer: 8
+  macroTimer: 30
   microPhase: 2
-  macroPhase: 8
+  macroPhase: 30
