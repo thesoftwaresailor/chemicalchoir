@@ -51,6 +51,16 @@ public struct CombinableResource
     public int macro;
     public int micro;
     public string name;
+
+    public bool Equals(CombinableResource obj)
+    {
+        return obj.macro == macro && obj.micro == micro && obj.name == name;
+    }
+
+    public bool CompareNames(CombinableResource obj)
+    {
+        return obj.name == name;
+    }
 }
 
 [System.Serializable]
