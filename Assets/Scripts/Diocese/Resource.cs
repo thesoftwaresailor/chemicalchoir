@@ -1,37 +1,51 @@
 ﻿
-using System;
+
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Resource : MonoBehaviour
 {
+    private static readonly float MOUSE_FOLLOW_STRENGTH = 50f;
+
     private bool isMatA = true;
 
     public Material matA;
     public Material matB;
-    public Renderer renderer;
-    public Rigidbody rigidbody;
+    [FormerlySerializedAs("renderer")]
+    public Renderer resourceRenderer;
+    [FormerlySerializedAs("rigidbody")]
+    public Rigidbody rigidBody;
 
     public int macro;
     public int micro;
-    public string name;
+    [FormerlySerializedAs("name")]
+    public string resourceName;
 
     public float microTimer;
     public float macroTimer;
-    public float microPhase;
-    public float macroPhase;
+
+    private float microPhase;
+    private float macroPhase;
 
     private int layerMask;
     private int resourceMask;
+
+    private float initialMass;
+    private Vector3 targetPoint;
+
+    public float MicroPhase => microPhase;
+    public float MacroPhase => macroPhase;
 
     private void Start()
     {
         layerMask = 1 << LayerMask.NameToLayer("Drop");
         resourceMask = 1 << LayerMask.NameToLayer("Resources");
+        initialMass = rigidBody.mass;
     }
 
     private void FlipMicro()
     {
-        renderer.material = isMatA ? matA : matB;
+        resourceRenderer.material = isMatA ? matA : matB;
         isMatA = !isMatA;
         micro = micro == 0 ? 1 : 0;
     }
@@ -63,14 +77,19 @@ public class Resource : MonoBehaviour
 
         if (isBeingDragged)
         {
-            RaycastHit result;
-            if(CastFromScreenAtMouse(out result))
-                transform.position = result.point;
+            if(CastFromScreenAtMouse(out RaycastHit result))
+            {
+                targetPoint = result.point;
+            }
+
+            Vector3 displacement = targetPoint - transform.position;
+            rigidBody.velocity = displacement.normalized * MOUSE_FOLLOW_STRENGTH * Mathf.Clamp(displacement.magnitude, 0f, 1f);
+
             if (Input.GetMouseButtonUp(0))
             {
-                isBeingDragged = false;
-                rigidbody.isKinematic = false;
-                DropPlane.instance.gameObject.layer = 2;
+                ToggleDragState(false);
+
+                DropPlane.instance.Hide();
                 RaycastHit[] resources = CastFromScreenAtMouseForResource();
                 if (resources.Length >= 2)
                 {
@@ -92,9 +111,8 @@ public class Resource : MonoBehaviour
 
     private void OnMouseDown()
     {
-        isBeingDragged = true;
-        rigidbody.isKinematic = true;
-        DropPlane.instance.gameObject.layer = 3;
+        ToggleDragState(true);
+        DropPlane.instance.Show();
     }
 
     private void OnMouseEnter()
@@ -107,6 +125,13 @@ public class Resource : MonoBehaviour
         ResourceTooltip.instance.HideTooltip();
     }
 
+    private void ToggleDragState(bool isOn)
+    {
+        isBeingDragged = isOn;
+        rigidBody.mass = isOn ? 50f : initialMass;
+        rigidBody.useGravity = !isOn;
+
+    }
     private bool CastFromScreenAtMouse(out RaycastHit hit)
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
