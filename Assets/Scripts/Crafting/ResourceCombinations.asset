@@ -49,8 +49,48 @@ MonoBehaviour:
         micro: 1
         name: Myrtle
       b:
+        macro: 0
+        micro: 1
+        name: Luna Alba
+    value: {fileID: 4721455960888352766, guid: 62c3bf5614e86f7499e0228a286c0512, type: 3}
+  - key:
+      a:
+        macro: 0
+        micro: 1
+        name: Myrtle
+      b:
+        macro: 1
+        micro: 1
+        name: Saturnine
+    value: {fileID: 8790364630088791788, guid: 45e3e36316f37b44baa6114dd291c2cf, type: 3}
+  - key:
+      a:
+        macro: 1
+        micro: 0
+        name: Antimony
+      b:
         macro: 1
         micro: 0
         name: Luna Alba
+    value: {fileID: 1056236635278682711, guid: f62a1d81ac4968f48bd17c32fdd8122a, type: 3}
+  - key:
+      a:
+        macro: 1
+        micro: 0
+        name: Luna Alba
+      b:
+        macro: 0
+        micro: 0
+        name: Saturnine
+    value: {fileID: 8562425198758792228, guid: 5904333fead3cae46811069078e947d6, type: 3}
+  - key:
+      a:
+        macro: 1
+        micro: 0
+        name: Myrtle
+      b:
+        macro: 0
+        micro: 1
+        name: Antimony
     value: {fileID: 4721455960888352766, guid: 62c3bf5614e86f7499e0228a286c0512, type: 3}
   defaultResource: {fileID: 3764654162266552777, guid: cb8ec721b7790ca4c9233b5f8eff008c, type: 3}

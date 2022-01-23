@@ -17,6 +17,7 @@ public class Diocese : MonoBehaviour
     private void Start()
     {
         currentTimeScale = slowTimeScale;
+        spawnScale = 1;
     }
 
     void OnTriggerEnter(Collider collision)
@@ -46,6 +47,8 @@ public class Diocese : MonoBehaviour
 
     public float spawnTimer;
 
+    private float spawnScale;
+
     public float spawnCounter;
 
     public float offsetXBound;
@@ -58,12 +61,18 @@ public class Diocese : MonoBehaviour
 
     public void Update()
     {
-        spawnCounter -= Time.deltaTime;
-        if(spawnCounter <= 0)
+        spawnCounter += Time.deltaTime;
+        if(spawnCounter >= spawnTimer * spawnScale)
         {
-            spawnCounter = spawnTimer;
+            spawnCounter = 0;
             SpawnResource();
         }
+        ScaleSpawn();
+    }
+
+    private void ScaleSpawn()
+    {
+        spawnScale = (float) Math.Floor(Resource.ResourceRegister.Count / 6.0f) + 1;
     }
 
     private void SpawnResource()
