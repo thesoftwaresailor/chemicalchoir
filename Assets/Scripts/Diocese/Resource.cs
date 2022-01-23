@@ -14,7 +14,7 @@ public class Resource : MonoBehaviour
     public static List<Resource> ResourceRegister => _ResourceRegister;
     private static List<Resource> _ResourceRegister = new List<Resource>();
 
-    public Image selectedCircle;
+    public SpriteRenderer selectedCircle;
 
     public Material matA;
     public Material matB;
@@ -177,6 +177,11 @@ public class Resource : MonoBehaviour
                 resource.selectedCircle.enabled = false;
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        _ResourceRegister.Remove(this);
     }
 
 }
