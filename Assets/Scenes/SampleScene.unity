@@ -803,7 +803,7 @@ MonoBehaviour:
   resourceDescription: {fileID: 1471727402}
   tooltip: {fileID: 945597304}
   camera: {fileID: 1687258584}
-  offset: {x: 0, y: 0.1, z: 0}
+  offset: {x: 0, y: 0.4, z: 0}
   parentTransform: {fileID: 556193087}
 --- !u!114 &945597309
 MonoBehaviour:
@@ -903,7 +903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3370294561276783592, guid: 28a200ccecb618f4baf31fcaa69429c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9496072
+      value: 1.026
       objectReference: {fileID: 0}
     - target: {fileID: 3370294561276783592, guid: 28a200ccecb618f4baf31fcaa69429c0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -911,7 +911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3370294561276783592, guid: 28a200ccecb618f4baf31fcaa69429c0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.064
+      value: -1.389
       objectReference: {fileID: 0}
     - target: {fileID: 3370294561276783592, guid: 28a200ccecb618f4baf31fcaa69429c0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1618,15 +1618,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6118521070311802755, guid: c5c2f8dc4fcefc946a03550a9d2cabee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.0434725
+      value: 1.427
       objectReference: {fileID: 0}
     - target: {fileID: 6118521070311802755, guid: c5c2f8dc4fcefc946a03550a9d2cabee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4752209
+      value: 1.511
       objectReference: {fileID: 0}
     - target: {fileID: 6118521070311802755, guid: c5c2f8dc4fcefc946a03550a9d2cabee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.75461566
+      value: -1.19
       objectReference: {fileID: 0}
     - target: {fileID: 6118521070311802755, guid: c5c2f8dc4fcefc946a03550a9d2cabee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1736,7 +1736,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 3.8491507e+9, y: 4.23197e+21, z: 7.0601816e+28, w: 1.2414276e+28}
+  m_BoundingSphereOverride: {x: 0, y: 0.017578125, z: -0.0234375, w: -1}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
