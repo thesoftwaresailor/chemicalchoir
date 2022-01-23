@@ -113,6 +113,7 @@ public class Resource : MonoBehaviour
             {
                 ToggleDragState(false);
                 HideSelectableImage();
+                Crafting.instance.HideResource();
                 DropPlane.instance.Hide();
                 RaycastHit[] resources = CastFromScreenAtMouseForResource();
                 if (resources.Length >= 2)
@@ -167,6 +168,7 @@ public class Resource : MonoBehaviour
         ToggleDragState(true);
         DropPlane.instance.Show();
         ShowSelectableImage();
+        Crafting.instance.DisplayResource(this);
     }
 
     private void OnMouseEnter()

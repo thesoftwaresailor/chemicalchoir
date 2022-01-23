@@ -16,6 +16,7 @@ class Crafting : MonoBehaviour
     public void Start()
     {
         instance = this;
+        foundPairs = new List<CombinationPair>();
         combinations.FillDictionary();
     }
 
@@ -61,16 +62,16 @@ class Crafting : MonoBehaviour
             craftedCombos.Add(pair);
     }
 
-    private List<CombinationPair> SearchForResource(CombinableResource resource)
+    private List<CombinationPair> foundPairs;
+
+    private void SearchForResource(CombinableResource resource)
     {
-        List<CombinationPair> output = new List<CombinationPair>();
+        foundPairs.Clear();
         foreach(CombinationPair pair in craftedCombos)
         {
-            if (pair.a.Equals(resource) || pair.b.Equals(resource))
-                output.Add(pair);
+            if (pair.a.CompareNames(resource) || pair.b.CompareNames(resource))
+                foundPairs.Add(pair);
         }
-        return output;
-
     }
 
     public void DisplayResource(Resource selected)
@@ -78,9 +79,10 @@ class Crafting : MonoBehaviour
         CombinableResource resource;
         resource.macro = selected.macro;
         resource.micro = selected.micro;
-        resource.name = selected.name;
-        List<CombinationPair> combos = SearchForResource(resource);
-        foreach(CombinationPair pair in combos)
+        resource.name = selected.resourceName; 
+        SearchForResource(resource);
+        recordText.text = "";
+        foreach(CombinationPair pair in foundPairs)
         {
             recordText.text += GetLineFromPair(ConvertPair(pair));
         }
@@ -94,8 +96,8 @@ class Crafting : MonoBehaviour
 
     private string GetLineFromPair(DisplayableCombinationPair pair)
     {
-        string output = pair.a.macro + " " + pair.a.micro + " " + pair.a.name + " and ";
-        output += pair.b.macro + " " + pair.b.micro + " " + pair.b.name + " creates ";
+        string output = pair.a.macro.Substring(0, 3) + ". " + pair.a.micro.Substring(0, 1) + ". " + pair.a.name.Substring(0, 3) + ". and ";
+        output += pair.b.macro.Substring(0, 3) + ". " + pair.b.micro.Substring(0, 1) + ". " + pair.b.name.Substring(0, 3) + ". creates ";
         output += combinations.combineResource(pair.data).name + "\n";
         return output;
     }
