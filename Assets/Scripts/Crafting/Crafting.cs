@@ -96,9 +96,14 @@ class Crafting : MonoBehaviour
 
     private string GetLineFromPair(DisplayableCombinationPair pair)
     {
-        string output = pair.a.macro.Substring(0, 3) + ". " + pair.a.micro.Substring(0, 1) + ". " + pair.a.name.Substring(0, 3) + ". and ";
-        output += pair.b.macro.Substring(0, 3) + ". " + pair.b.micro.Substring(0, 1) + ". " + pair.b.name.Substring(0, 3) + ". creates ";
-        output += combinations.combineResource(pair.data).name + "\n";
+        string output = pair.a.name + "\t+\t" + pair.b.name + "  =  " + combinations.combineResource(pair.data).name + "\n"
+            + "  " + pair.a.macro.Substring(0, 3) + ". " + pair.a.micro.Substring(0, 1) + "." + "\t\t"
+            + "  " + pair.b.macro.Substring(0, 3) + ". " + pair.b.micro.Substring(0, 1) + ".\n";
+
+
+       // string output = pair.a.macro.Substring(0, 3) + ". \t" + pair.a.micro.Substring(0, 1) + ". " + pair.a.name.Substring(0, 3) + ". + ";
+       // output += pair.b.macro.Substring(0, 3) + ". " + pair.b.micro.Substring(0, 1) + ". " + pair.b.name.Substring(0, 3) + ". creates ";
+       // output += combinations.combineResource(pair.data).name + "\n";
         return output;
     }
 
