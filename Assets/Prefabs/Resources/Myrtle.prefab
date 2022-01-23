@@ -209,13 +209,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCircle: {fileID: 9184729945912576737}
-  matA: {fileID: 2100000, guid: f73c4ff6f0c89fd4291974015207be09, type: 2}
-  matB: {fileID: 2100000, guid: 49481bfadf2f8df44bce858cabc86551, type: 2}
+  destinationColor: {r: 1, g: 1, b: 1, a: 1}
   resourceRenderer: {fileID: 6118521070311802753}
   rigidBody: {fileID: 6118521070311802759}
   macro: 0
   micro: 0
-  resourceName: Calcine
+  resourceName: Myrtle
   microTimer: 5
   macroTimer: 60
 --- !u!65 &4803017126176149441
