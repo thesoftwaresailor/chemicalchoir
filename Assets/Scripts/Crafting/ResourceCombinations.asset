@@ -27,7 +27,7 @@ MonoBehaviour:
       a:
         macro: 1
         micro: 1
-        name: Calcine
+        name: Myrtle
       b:
         macro: 1
         micro: 1
@@ -47,7 +47,7 @@ MonoBehaviour:
       a:
         macro: 0
         micro: 1
-        name: Calcine
+        name: Myrtle
       b:
         macro: 1
         micro: 0

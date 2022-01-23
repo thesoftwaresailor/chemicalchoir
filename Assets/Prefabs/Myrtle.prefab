@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 6118521070311802758}
   - component: {fileID: 4803017126176149441}
   m_Layer: 6
-  m_Name: Calcine
+  m_Name: Myrtle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
