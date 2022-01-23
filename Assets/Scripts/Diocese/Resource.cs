@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-class Resource : MonoBehaviour
+public class Resource : MonoBehaviour
 {
     private bool isMatA = true;
 
@@ -25,7 +25,7 @@ class Resource : MonoBehaviour
 
     private void Start()
     {
-        layerMask = 1 << LayerMask.NameToLayer("Ignore Raycast");
+        layerMask = 1 << LayerMask.NameToLayer("Drop");
         resourceMask = 1 << LayerMask.NameToLayer("Resources");
     }
 
@@ -70,6 +70,7 @@ class Resource : MonoBehaviour
             {
                 isBeingDragged = false;
                 rigidbody.isKinematic = false;
+                DropPlane.instance.gameObject.layer = 2;
                 RaycastHit[] resources = CastFromScreenAtMouseForResource();
                 if (resources.Length >= 2)
                 {
@@ -93,6 +94,17 @@ class Resource : MonoBehaviour
     {
         isBeingDragged = true;
         rigidbody.isKinematic = true;
+        DropPlane.instance.gameObject.layer = 3;
+    }
+
+    private void OnMouseEnter()
+    {
+        ResourceTooltip.instance.ShowTooltip(this);
+    }
+
+    private void OnMouseExit()
+    {
+        ResourceTooltip.instance.HideTooltip();
     }
 
     private bool CastFromScreenAtMouse(out RaycastHit hit)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Combinations")]
-class Combinations : ScriptableObject
+public class Combinations : ScriptableObject
 {
     public Dictionary<CombinationPair, GameObject> combinations;
 
