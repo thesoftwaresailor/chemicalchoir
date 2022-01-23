@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 public class Resource : MonoBehaviour
 {
-    private static readonly float MOUSE_FOLLOW_STRENGTH = 30f;
+    private static readonly float MOUSE_FOLLOW_STRENGTH = 18f;
     private static readonly string MATERIAL_EMISSION_NAME = "Color_6bb548e152674a10b20db0483b8b423c";
     private static readonly string MATERIAL_COLOR_NAME = "Color_d9dbbc69cde44ff6ae084f38082421d4";
     private static readonly string MATERIAL_SPECIAL_NAME = "Vector1_c885be47250f45b19ac91272cf04b7e7";
@@ -107,7 +107,7 @@ public class Resource : MonoBehaviour
             }
 
             Vector3 displacement = targetPoint - transform.position;
-            rigidBody.velocity = displacement.normalized * MOUSE_FOLLOW_STRENGTH * Mathf.Clamp(displacement.magnitude, 0f, 1f);
+            rigidBody.velocity = displacement.normalized * MOUSE_FOLLOW_STRENGTH * Mathf.Clamp(displacement.magnitude, 0f, 0.5f);
 
             if (Input.GetMouseButtonUp(0))
             {
