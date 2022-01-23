@@ -23,4 +23,34 @@ MonoBehaviour:
         micro: 1
         name: Antimony
     value: {fileID: 100000, guid: bae110eee250e4b418b188f4ae4e3170, type: 3}
+  - key:
+      a:
+        macro: 1
+        micro: 1
+        name: Calcine
+      b:
+        macro: 1
+        micro: 1
+        name: Antimony
+    value: {fileID: 100000, guid: bae110eee250e4b418b188f4ae4e3170, type: 3}
+  - key:
+      a:
+        macro: 0
+        micro: 1
+        name: Saturnine
+      b:
+        macro: 0
+        micro: 0
+        name: Luna Alba
+    value: {fileID: 100000, guid: bae110eee250e4b418b188f4ae4e3170, type: 3}
+  - key:
+      a:
+        macro: 0
+        micro: 1
+        name: Calcine
+      b:
+        macro: 1
+        micro: 0
+        name: Luna Alba
+    value: {fileID: 100000, guid: bae110eee250e4b418b188f4ae4e3170, type: 3}
   defaultResource: {fileID: 100000, guid: 68a66fb5a71f8204a8dcb613c97d1fa8, type: 3}
