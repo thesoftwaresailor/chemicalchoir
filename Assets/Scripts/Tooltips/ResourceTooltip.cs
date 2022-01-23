@@ -53,9 +53,9 @@ public class ResourceTooltip : MonoBehaviour
         {
             if (resource)
             {
-                resourceName.text = resource.name;
-                double micro = Math.Round(resource.microTimer - (resource.microTimer - resource.microPhase), 1);
-                double macro = Math.Round(resource.macroTimer - (resource.macroTimer - resource.macroPhase), 1);
+                resourceName.text = resource.resourceName;
+                double micro = Math.Round(resource.MicroPhase, 1);
+                double macro = Math.Round(resource.MacroPhase, 1);
                 resourceDescription.text = "Minor Phase: " + micro + "\nMajor Phase: " + macro;
                 parentTransform.position = resource.gameObject.transform.position + offset;
                 parentTransform.LookAt(transform.position + camera.transform.rotation * Vector3.forward, camera.transform.rotation * Vector3.up);

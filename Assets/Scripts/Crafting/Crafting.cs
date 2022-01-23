@@ -18,11 +18,11 @@ class Crafting : MonoBehaviour
         CombinableResource one;
         one.micro = resourceOne.micro;
         one.macro = resourceOne.macro;
-        one.name = resourceOne.name;
+        one.name = resourceOne.resourceName;
         CombinableResource two;
         two.micro = resourceTwo.micro;
         two.macro = resourceTwo.macro;
-        two.name = resourceTwo.name;
+        two.name = resourceTwo.resourceName;
         CombinationPair pair;
         pair.a = one;
         pair.b = two;
