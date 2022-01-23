@@ -360,7 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fastTimeScale: 5
   slowTimeScale: 1
-  spawnTimer: 10
+  spawnTimer: 15
   spawnCounter: 3
   offsetXBound: 0.45
   offsetZBound: 0.45
@@ -772,7 +772,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 200
+  m_PreferredWidth: 250
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -2523,7 +2523,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 9.1835e-41, y: 2.0387484e-38, z: 4.5697343e-37, w: 4.1326e-40}
+  m_BoundingSphereOverride: {x: 0, y: -7.6206123e-34, z: 4.5905e-41, w: 1e-45}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2884,6 +2884,9 @@ MonoBehaviour:
   macro: 0
   micro: 0
   resourceName: 
+  description:
+    minorPhase: []
+    majorPhase: []
   microTimer: 2
   macroTimer: 8
 --- !u!54 &1997307283
@@ -3426,8 +3429,8 @@ MonoBehaviour:
   rend: {fileID: 2329555366732741972}
   selectedIndent: {x: 0, y: 0.04, z: 0}
   positionLerpStrength: 10
-  emissionStrengthIncrease: 10
-  emissionLerpStrength: 10
+  emissionStrengthIncrease: 4
+  emissionLerpStrength: 3
 --- !u!65 &6383590035220543365
 BoxCollider:
   m_ObjectHideFlags: 0

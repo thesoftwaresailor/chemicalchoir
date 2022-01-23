@@ -215,6 +215,13 @@ MonoBehaviour:
   macro: 0
   micro: 0
   resourceName: Luna Alba
+  description:
+    minorPhase:
+    - Stable
+    - Flux
+    majorPhase:
+    - Waned
+    - Waxed
   microTimer: 1
   macroTimer: 20
 --- !u!135 &6568298973330339848

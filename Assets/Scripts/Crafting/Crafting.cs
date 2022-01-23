@@ -31,8 +31,6 @@ class Crafting : MonoBehaviour
         Instantiate(result, spawnPosition, result.transform.rotation);
         Destroy(resourceOne.gameObject);
         Destroy(resourceTwo.gameObject);
-
-
     }
 
 }

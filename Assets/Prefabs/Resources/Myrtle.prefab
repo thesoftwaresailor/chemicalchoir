@@ -215,6 +215,13 @@ MonoBehaviour:
   macro: 0
   micro: 0
   resourceName: Myrtle
+  description:
+    minorPhase:
+    - Stable
+    - Flux
+    majorPhase:
+    - Waned
+    - Waxed
   microTimer: 5
   macroTimer: 60
 --- !u!65 &4803017126176149441

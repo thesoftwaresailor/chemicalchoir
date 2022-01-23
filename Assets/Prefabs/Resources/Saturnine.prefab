@@ -114,13 +114,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCircle: {fileID: 7458522409022832817}
-  matA: {fileID: 2100000, guid: f73c4ff6f0c89fd4291974015207be09, type: 2}
-  matB: {fileID: 2100000, guid: 49481bfadf2f8df44bce858cabc86551, type: 2}
+  destinationColor: {r: 1, g: 1, b: 1, a: 1}
   resourceRenderer: {fileID: 1882267882374685465}
   rigidBody: {fileID: 1882267882374685471}
   macro: 0
   micro: 0
   resourceName: Saturnine
+  description:
+    minorPhase:
+    - Stable
+    - Flux
+    majorPhase:
+    - Waxed
+    - Waned
   microTimer: 2
   macroTimer: 30
 --- !u!65 &3999428828817594871

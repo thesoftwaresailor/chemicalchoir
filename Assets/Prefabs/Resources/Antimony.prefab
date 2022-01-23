@@ -215,6 +215,13 @@ MonoBehaviour:
   macro: 0
   micro: 0
   resourceName: Antimony
+  description:
+    minorPhase:
+    - Stable
+    - Flux
+    majorPhase:
+    - Waned
+    - Waxed
   microTimer: 3
   macroTimer: 45
 --- !u!65 &1850694209363901675

@@ -28,7 +28,7 @@ public class Resource : MonoBehaviour
     public int micro;
     [FormerlySerializedAs("name")]
     public string resourceName;
-
+    public PhaseDescription description;
     public float microTimer;
     public float macroTimer;
 
@@ -228,4 +228,11 @@ public class Resource : MonoBehaviour
         _ResourceRegister.Remove(this);
     }
 
+}
+
+[System.Serializable]
+public struct PhaseDescription
+{
+    public string[] minorPhase;
+    public string[] majorPhase;
 }
