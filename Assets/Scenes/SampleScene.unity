@@ -232,6 +232,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diocese: {fileID: 1488531986}
+  rend: {fileID: 0}
+  selectedIndent: {x: 0, y: 0, z: 0}
+  positionLerpStrength: 10
+  emissionStrengthIncrease: 5
+  emissionLerpStrength: 10
 --- !u!1 &393802909
 GameObject:
   m_ObjectHideFlags: 0

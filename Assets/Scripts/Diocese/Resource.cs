@@ -1,13 +1,20 @@
 ﻿
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class Resource : MonoBehaviour
 {
     private static readonly float MOUSE_FOLLOW_STRENGTH = 50f;
 
     private bool isMatA = true;
+
+    public static List<Resource> ResourceRegister => _ResourceRegister;
+    private static List<Resource> _ResourceRegister = new List<Resource>();
+
+    public Image selectedCircle;
 
     public Material matA;
     public Material matB;
@@ -38,6 +45,7 @@ public class Resource : MonoBehaviour
 
     private void Start()
     {
+        _ResourceRegister.Add(this);
         layerMask = 1 << LayerMask.NameToLayer("Drop");
         resourceMask = 1 << LayerMask.NameToLayer("Resources");
         initialMass = rigidBody.mass;
@@ -88,7 +96,7 @@ public class Resource : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 ToggleDragState(false);
-
+                HideSelectableImage();
                 DropPlane.instance.Hide();
                 RaycastHit[] resources = CastFromScreenAtMouseForResource();
                 if (resources.Length >= 2)
@@ -113,6 +121,7 @@ public class Resource : MonoBehaviour
     {
         ToggleDragState(true);
         DropPlane.instance.Show();
+        ShowSelectableImage();
     }
 
     private void OnMouseEnter()
@@ -146,6 +155,28 @@ public class Resource : MonoBehaviour
 
         RaycastHit[] hits = Physics.RaycastAll(ray, 5f, resourceMask);
         return hits;
+    }
+
+    private void ShowSelectableImage()
+    {
+        foreach(Resource resource in _ResourceRegister)
+        {
+            if(resource != this)
+            {
+                resource.selectedCircle.enabled = true;
+            }
+        }
+    }
+
+    private void HideSelectableImage()
+    {
+        foreach (Resource resource in _ResourceRegister)
+        {
+            if (resource != this)
+            {
+                resource.selectedCircle.enabled = false;
+            }
+        }
     }
 
 }

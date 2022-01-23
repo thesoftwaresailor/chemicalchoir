@@ -65,6 +65,5 @@ public class Diocese : MonoBehaviour
     {
         Instantiate(spawnables[spawnType], gameObject.transform.position + offset, gameObject.transform.rotation);
         spawnType = spawnType == 3 ? 0 : spawnType + 1;
-        Debug.Log(spawnType);
     }
 }
