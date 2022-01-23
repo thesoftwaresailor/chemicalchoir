@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,7 +48,11 @@ public class Diocese : MonoBehaviour
 
     public float spawnCounter;
 
-    public Vector3 offset;
+    public float offsetXBound;
+
+    public float offsetZBound;
+
+    private Vector3 offset;
 
     public List<GameObject> spawnables;
 
@@ -65,5 +70,6 @@ public class Diocese : MonoBehaviour
     {
         Instantiate(spawnables[spawnType], gameObject.transform.position + offset, gameObject.transform.rotation);
         spawnType = spawnType == 3 ? 0 : spawnType + 1;
+        offset = new Vector3(UnityEngine.Random.Range(-offsetXBound, offsetXBound), 0.2f, UnityEngine.Random.Range(-offsetZBound, offsetZBound));
     }
 }

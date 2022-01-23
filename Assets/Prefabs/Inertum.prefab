@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7730088233711551984}
   - component: {fileID: 6265426103664268307}
   m_Layer: 0
-  m_Name: Intertum
+  m_Name: Inertum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
