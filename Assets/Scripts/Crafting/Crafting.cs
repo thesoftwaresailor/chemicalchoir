@@ -96,7 +96,7 @@ class Crafting : MonoBehaviour
 
     private string GetLineFromPair(DisplayableCombinationPair pair)
     {
-        return pair.a.name + "  \t+\t" + pair.b.name + "\t= " + combinations.combineResource(pair.data).name + "\n"
+        return pair.a.name + "  \t+\t" + pair.b.name + "  \t= \t" + combinations.combineResource(pair.data).name + "\n"
             + pair.a.macro + ". " + pair.a.micro + ".\t"
             + pair.b.macro + ". " + pair.b.micro + ".\n";
     }
