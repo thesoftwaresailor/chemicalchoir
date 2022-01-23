@@ -68,20 +68,20 @@ class Resource : MonoBehaviour
                 transform.position = result.point;
             if (Input.GetMouseButtonUp(0))
             {
-                Debug.Log("Mouse up");
                 isBeingDragged = false;
                 rigidbody.isKinematic = false;
                 RaycastHit[] resources = CastFromScreenAtMouseForResource();
-                Debug.Log(resources.ToString());
-                Debug.Log(resources[0]);
                 if (resources.Length >= 2)
                 {
-                    Collider two = resources[1].collider;
-                    if(two == this.gameObject)
+                    Collider two = resources[0].collider;
+                    int x = 0;
+                    while(two.gameObject == this.gameObject && x < resources.Length)
                     {
-                        two = resources[0].collider;
+                        x++;
+                        two = resources[x].collider;
                     }
-                    Crafting.instance.Craft(this, two.gameObject.GetComponent<Resource>());
+                    if(x < resources.Length)
+                        Crafting.instance.Craft(this, two.gameObject.GetComponent<Resource>());
                 }
             }
         }

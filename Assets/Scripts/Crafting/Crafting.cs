@@ -27,10 +27,12 @@ class Crafting : MonoBehaviour
         pair.a = one;
         pair.b = two;
         GameObject result = combinations.combineResource(pair);
-        var spawnTransform = resourceOne.gameObject.transform;
+        var spawnPosition = resourceOne.gameObject.transform.position;
+        Instantiate(result, spawnPosition, result.transform.rotation);
         Destroy(resourceOne.gameObject);
         Destroy(resourceTwo.gameObject);
-        Instantiate(result, spawnTransform);
+
+
     }
 
 }

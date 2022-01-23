@@ -18,12 +18,10 @@ public class Diocese : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided");
         GameObject gm = collision.gameObject;
         Resource resource = gm.GetComponent<Resource>();
         if (resource)
         {
-            Debug.Log("Set timescale in resource");
             resource.Diocese = this;
         }
     }

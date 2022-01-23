@@ -13,10 +13,17 @@ class Combinations : ScriptableObject
 
     public GameObject combineResource(CombinationPair input)
     {
-        if (combinations.ContainsKey(input))
+
+        if (combinations.TryGetValue(input, out GameObject output))
         {
-            combinations.TryGetValue(input, out GameObject output);
             return output;
+        } else
+        {
+            var temp = input.a;
+            input.a = input.b;
+            input.b = temp;
+            if (combinations.TryGetValue(input, out GameObject output2))
+                return output2;
         }
         return defaultResource;
     }
