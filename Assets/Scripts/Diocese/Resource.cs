@@ -9,10 +9,10 @@ public class Resource : MonoBehaviour
     private static readonly string MATERIAL_COLOR_NAME = "Color_d9dbbc69cde44ff6ae084f38082421d4";
     private static readonly string MATERIAL_SPECIAL_NAME = "Vector1_c885be47250f45b19ac91272cf04b7e7";
 
-    private bool isMatA = true;
-
     public static List<Resource> ResourceRegister => _ResourceRegister;
     private static List<Resource> _ResourceRegister = new List<Resource>();
+
+    public AudioSource collisionSound;
 
     public SpriteRenderer selectedCircle;
     public Color destinationColor = Color.white;
@@ -65,7 +65,6 @@ public class Resource : MonoBehaviour
     private void FlipMicro()
     {
         spikeTransitionPhase = visualTransitionTimer;
-        isMatA = !isMatA;
         micro = micro == 0 ? 1 : 0;
     }
 
@@ -224,6 +223,31 @@ public class Resource : MonoBehaviour
             }
         }
     }
+
+    // Sound
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collisionSound != null && collisionSound.isPlaying == false && IsAResource(collision.gameObject))
+        {
+            collisionSound.Play();
+        }
+    }
+
+    private bool IsAResource(GameObject obj)
+    {
+        return obj.layer == 6 || obj.layer == 7;
+    }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        AudioSource source = GetComponent<AudioSource>();
+        if (source)
+        {
+            collisionSound = source;
+        }
+    }
+#endif
 
     private void OnDestroy()
     {
