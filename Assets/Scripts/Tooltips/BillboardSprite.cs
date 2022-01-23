@@ -20,7 +20,13 @@ public class BillboardSprite : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(new Vector3(0, 50, 0));
-        transform.position = parentTransform.position - offset;
+        if (parentTransform)
+        {
+            transform.LookAt(new Vector3(0, 50, 0));
+            transform.position = parentTransform.position - offset;
+        } else
+        {
+            Destroy(gameObject);
+        }
     }
 }
