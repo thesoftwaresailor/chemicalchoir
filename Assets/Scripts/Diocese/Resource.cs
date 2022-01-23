@@ -1,13 +1,13 @@
-﻿
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class Resource : MonoBehaviour
 {
-    private static readonly float MOUSE_FOLLOW_STRENGTH = 50f;
+    private static readonly float MOUSE_FOLLOW_STRENGTH = 30f;
+    private static readonly string MATERIAL_EMISSION_NAME = "Color_6bb548e152674a10b20db0483b8b423c";
+    private static readonly string MATERIAL_COLOR_NAME = "Color_d9dbbc69cde44ff6ae084f38082421d4";
+    private static readonly string MATERIAL_SPECIAL_NAME = "Vector1_c885be47250f45b19ac91272cf04b7e7";
 
     private bool isMatA = true;
 
@@ -15,9 +15,10 @@ public class Resource : MonoBehaviour
     private static List<Resource> _ResourceRegister = new List<Resource>();
 
     public SpriteRenderer selectedCircle;
+    public Color destinationColor = Color.white;
 
-    public Material matA;
-    public Material matB;
+    private float visualTransitionTimer = 0.1f;
+
     [FormerlySerializedAs("renderer")]
     public Renderer resourceRenderer;
     [FormerlySerializedAs("rigidbody")]
@@ -34,10 +35,14 @@ public class Resource : MonoBehaviour
     private float microPhase;
     private float macroPhase;
 
+    private float spikeTransitionPhase;
+    private float colorTransitionPhase;
+    private Color startColor;
+    private Color startEmissionColor;
+
     private int layerMask;
     private int resourceMask;
 
-    private float initialMass;
     private Vector3 targetPoint;
 
     private bool isBeingDragged;
@@ -47,23 +52,26 @@ public class Resource : MonoBehaviour
 
     private void Start()
     {
+        startColor = resourceRenderer.material.GetColor(MATERIAL_COLOR_NAME);
+        startEmissionColor = resourceRenderer.material.GetColor(MATERIAL_EMISSION_NAME);
+
         _ResourceRegister.Add(this);
         layerMask = 1 << LayerMask.NameToLayer("Drop");
         resourceMask = 1 << LayerMask.NameToLayer("Resources");
-        initialMass = rigidBody.mass;
         microPhase = microTimer;
         macroPhase = macroTimer;
     }
 
     private void FlipMicro()
     {
-        resourceRenderer.material = isMatA ? matA : matB;
+        spikeTransitionPhase = visualTransitionTimer;
         isMatA = !isMatA;
         micro = micro == 0 ? 1 : 0;
     }
 
     private void FlipMacro()
     {
+        colorTransitionPhase = visualTransitionTimer;
         macro = macro == 0 ? 1 : 0;
     }
 
@@ -71,15 +79,19 @@ public class Resource : MonoBehaviour
 
     private void Update()
     {
+        float scaledDelta = Time.deltaTime;
+
         if (Diocese)
         {
-            microPhase -= Time.deltaTime * Diocese.CurrentTimeScale;
+            scaledDelta *= Diocese.CurrentTimeScale;
+
+            microPhase -= scaledDelta;
             if (microPhase <= 0)
             {
                 FlipMicro();
                 microPhase = microTimer;
             }
-            macroPhase -= Time.deltaTime * Diocese.CurrentTimeScale;
+            macroPhase -= scaledDelta;
             if (macroPhase <= 0)
             {
                 macroPhase = macroTimer;
@@ -117,6 +129,37 @@ public class Resource : MonoBehaviour
                 }
             }
         }
+
+        if (colorTransitionPhase > 0)
+        {
+            colorTransitionPhase -= scaledDelta;
+            colorTransitionPhase = Mathf.Max(0f, colorTransitionPhase);
+
+            float amount = (colorTransitionPhase / visualTransitionTimer);
+            if (macro == 1)
+            {
+                amount = 1f - amount;
+            }
+
+            Color scaledResult = Color.Lerp(startColor, destinationColor, amount);
+            Color scaledResultEmission = Color.Lerp(startEmissionColor, destinationColor, amount);
+            resourceRenderer.material.SetColor(MATERIAL_COLOR_NAME, scaledResult);
+            resourceRenderer.material.SetColor(MATERIAL_EMISSION_NAME, scaledResultEmission);
+        }
+
+        if (spikeTransitionPhase > 0)
+        {
+            spikeTransitionPhase -= scaledDelta;
+            spikeTransitionPhase = Mathf.Max(0f, spikeTransitionPhase);
+
+            float amount = (spikeTransitionPhase / visualTransitionTimer);
+            if (micro == 1)
+            {
+                amount = 1f - amount;
+            }
+
+            resourceRenderer.material.SetFloat(MATERIAL_SPECIAL_NAME, amount);
+        }
     }
 
     private void OnMouseDown()
@@ -139,7 +182,6 @@ public class Resource : MonoBehaviour
     private void ToggleDragState(bool isOn)
     {
         isBeingDragged = isOn;
-        rigidBody.mass = isOn ? 50f : initialMass;
         rigidBody.useGravity = !isOn;
 
     }

@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3760336452878587511
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 4
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -20,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MyrtleMaterial
+  m_Name: IntertumMaterial
   m_Shader: {fileID: -6465566751694194690, guid: 2cfb9a26712873f488204aa74bf01fbe, type: 3}
-  m_ShaderKeywords: BOOLEAN_7A59A99ED3334FF7902FABF7C4B9D2B8_ON BOOLEAN_B53858506A804A039CA83584035D79E8_ON
+  m_ShaderKeywords: BOOLEAN_B53858506A804A039CA83584035D79E8_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -97,18 +84,18 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - BOOLEAN_7A59A99ED3334FF7902FABF7C4B9D2B8: 1
+    - BOOLEAN_7A59A99ED3334FF7902FABF7C4B9D2B8: 0
     - BOOLEAN_B53858506A804A039CA83584035D79E8: 1
     - BOOLEAN_DE523AB2CAA443A5B7C75C5B3C584B48: 0
-    - Vector1_1641745e502c4c78b9476cbf652f4393: 0
+    - Vector1_1641745e502c4c78b9476cbf652f4393: 0.409
     - Vector1_25679f28b2854b118e48ebc321a8c577: 100
-    - Vector1_a6a6c8d0f37e4c428d61dd4c6d24cff9: 0
-    - Vector1_b0edde8e4d5d4bff9d2acca50139ef08: 300
-    - Vector1_b14a4005229043a7a26ba92f67b59815: 0.18
-    - Vector1_bbb0466919b7478793b11d616927fb1d: 0.05
-    - Vector1_c252954e50b9402ab20acdb8b1393080: 0
+    - Vector1_a6a6c8d0f37e4c428d61dd4c6d24cff9: 1
+    - Vector1_b0edde8e4d5d4bff9d2acca50139ef08: 500
+    - Vector1_b14a4005229043a7a26ba92f67b59815: 0
+    - Vector1_bbb0466919b7478793b11d616927fb1d: 0.01
+    - Vector1_c252954e50b9402ab20acdb8b1393080: 0.066
     - Vector1_c885be47250f45b19ac91272cf04b7e7: 0
-    - Vector1_ea23743020bb451b9c7c8a86a28342f7: 0.436
+    - Vector1_ea23743020bb451b9c7c8a86a28342f7: 0.6
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -136,10 +123,23 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_6bb548e152674a10b20db0483b8b423c: {r: 0.015686275, g: 0.047058824, b: 0.8784314, a: 0}
-    - Color_d9dbbc69cde44ff6ae084f38082421d4: {r: 0, g: 0.27916753, b: 0.6226415, a: 0}
+    - Color_6bb548e152674a10b20db0483b8b423c: {r: 0, g: 0, b: 0, a: 0}
+    - Color_d9dbbc69cde44ff6ae084f38082421d4: {r: 0.4245283, g: 0.29065874, b: 0.0020024967, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
+--- !u!114 &7359058511426223379
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 4

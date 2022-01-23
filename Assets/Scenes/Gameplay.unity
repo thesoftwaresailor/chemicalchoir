@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.20749128, g: 0.21147479, b: 0.14576818, a: 1}
+  m_IndirectSpecularColor: {r: 0.20749143, g: 0.21147497, b: 0.14576834, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1348,7 +1348,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4438129053286872168, guid: cefa6b6683640a646bf1a9aa9a310416, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4438129053286872168, guid: cefa6b6683640a646bf1a9aa9a310416, type: 3}
       propertyPath: m_LocalScale.x
@@ -2151,7 +2151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   m_LocalRotation: {x: 0, y: 0.9063079, z: -0.42261827, w: 0}
-  m_LocalPosition: {x: 0, y: 2.63, z: 1.278}
+  m_LocalPosition: {x: 0, y: 2.97, z: 1.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2450,7 +2450,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1750972037
 Transform:
@@ -2523,7 +2523,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: NaN, z: -0.000000014901167, w: 3.009266e-36}
+  m_BoundingSphereOverride: {x: 1e-45, y: 0, z: 0, w: 1e-45}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2878,8 +2878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCircle: {fileID: 0}
-  matA: {fileID: 2100000, guid: bd2d742ee2ce7a740ae0cf992a38be74, type: 2}
-  matB: {fileID: 2100000, guid: c532880e607f8c84d8b9bf0c46a522ad, type: 2}
+  destinationColor: {r: 0, g: 0, b: 0, a: 0}
   resourceRenderer: {fileID: 1997307279}
   rigidBody: {fileID: 1997307283}
   macro: 0
@@ -3174,13 +3173,28 @@ GameObject:
   - component: {fileID: 5367186062080541875}
   - component: {fileID: 7109842498341518841}
   - component: {fileID: 6020897310747924845}
+  - component: {fileID: 3803919042530711433}
   m_Layer: 0
   m_Name: Lantern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!136 &3803919042530711433
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3803919042530711432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.212193
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.17, z: 0}
 --- !u!4 &4154195990065488010
 Transform:
   m_ObjectHideFlags: 0
@@ -3195,7 +3209,7 @@ Transform:
   - {fileID: 2747545618667087032}
   - {fileID: 387504313}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 81.921, z: 0}
 --- !u!1 &4531159699111998452
 GameObject:
@@ -3313,7 +3327,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5120738188325467057}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: da2445e85a5255f44b4f6a3e4558ac4f, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
